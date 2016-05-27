@@ -1,18 +1,22 @@
 {
     "tags": {
-        "latest": "1.1.0"
+        "latest": "1.0.0"
     },
     "packages": {
         "1.0.0": {
-            "dist": {
-                "type": "zip",
-                "url": ""
-            }
-        },
-        "1.1.0": {
-            "dist": {
-                "type": "zip",
-                "url": ""
+            "dists": {
+                "win32": {
+                    "type": "zip",
+                    "url": "http://7xq7p1.com2.z0.glb.qiniucdn.com/ruff-sdk-win-1.0.0.zip"
+                },
+                "darwin": {
+                    "type": "zip",
+                    "url": "http://7xq7p1.com2.z0.glb.qiniucdn.com/ruff-sdk-mac-1.0.0.zip"
+                },
+                "linux-x64": {
+                    "type": "zip",
+                    "url": "http://7xq7p1.com2.z0.glb.qiniucdn.com/ruff-sdk-linux-1.0.0.zip"
+                }
             }
         }
     }
