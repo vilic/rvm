@@ -1,0 +1,1 @@
+# Ruff Version Manager Registry
