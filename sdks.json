@@ -6,15 +6,15 @@
         "1.0.0": {
             "dists": {
                 "win32": {
-                    "type": "zip",
+                    "format": "zip",
                     "url": "http://sdk.ruff.io/ruff-sdk-win-1.0.0.zip"
                 },
                 "darwin": {
-                    "type": "zip",
+                    "format": "zip",
                     "url": "http://sdk.ruff.io/ruff-sdk-mac-1.0.0.zip"
                 },
                 "linux-x64": {
-                    "type": "zip",
+                    "format": "zip",
                     "url": "http://sdk.ruff.io/ruff-sdk-linux-1.0.0.zip"
                 }
             }
@@ -22,15 +22,15 @@
         "1.1.0": {
             "dists": {
                 "win32": {
-                    "type": "zip",
+                    "format": "zip",
                     "url": "http://sdk.ruff.io/ruff-sdk-win-1.1.0.zip"
                 },
                 "darwin": {
-                    "type": "zip",
+                    "format": "zip",
                     "url": "http://sdk.ruff.io/ruff-sdk-mac-1.1.0.zip"
                 },
                 "linux-x64": {
-                    "type": "zip",
+                    "format": "zip",
                     "url": "http://sdk.ruff.io/ruff-sdk-linux-1.1.0.zip"
                 }
             }
