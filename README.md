@@ -10,6 +10,8 @@ npm install rvm --global
 
 ## Usage
 
+### Install Ruff SDK
+
 ```sh
 rvm install [version]
 ```
