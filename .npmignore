@@ -1,0 +1,7 @@
+/.vscode/
+/src/
+/typings/
+
+tsconfig.json
+
+.*
