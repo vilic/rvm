@@ -1,3 +1,5 @@
+import * as Chalk from 'chalk';
+
 import {
     Command,
     command,
@@ -11,8 +13,12 @@ import {
 } from '../core';
 
 import {
-    log
+    log,
+    warn,
+    checkPath
 } from '../utils';
+
+import * as config from '../config';
 
 @command({
     description: 'Install Ruff SDK on this computer.'
@@ -27,15 +33,33 @@ export default class extends Command {
     ) {
         log('FETCHING', 'SDK package metadata...');
 
+        let version: string;
+
         return getPackageMetadata(range)
             .then(metadata => {
-                log('DOWNLOADING', `SDK package (version ${metadata.version})...`);
+                version = metadata.version;
+                log('DOWNLOADING', `SDK package (version ${version})...`);
 
                 return downloadPackage('sdk', metadata);
             })
             .then(packagePath => {
                 log('EXTRACTING', 'SDK package...');
                 return extractPackage('sdk', packagePath);
+            })
+            .then(() => {
+                log('CHECKING', '`PATH` environment variable...');
+                return checkPath('sdk');
+            })
+            .then(pathConfigured => {
+                if (!pathConfigured) {
+                    log(Chalk.yellow(`\
+It seems that environment variable \`PATH\` has not yet been configured, please refer to the link below for how:
+  https://ruff.io/zh-cn/docs/environment-variables.html
+You might need the SDK path to walk through the configuration steps:
+  ${config.sdkPath}`));
+                }
+
+                log(`Ruff SDK (version ${version}) has been successfully installed.`);
             });
     }
 }

@@ -35,6 +35,7 @@
     "semver-match": "^0.1.1",
     "source-map-support": "^0.4.0",
     "thenfail": "^0.4.8",
-    "tmp": "0.0.28"
+    "tmp": "0.0.28",
+    "which": "^1.2.9"
   }
 }
