@@ -1,6 +1,7 @@
 import * as Path from 'path';
 
 import * as Chalk from 'chalk';
+import * as FS from 'fs-extra';
 import Promise from 'thenfail';
 import * as which from 'which';
 
@@ -19,7 +20,7 @@ export function log(verb: string, ...objects: any[]): void {
     console.log(verb, ...objects);
 }
 
-export function warn(...objects: any[]) {
+export function warn(...objects: any[]): void {
     console.log(Chalk.yellow('WARN'), ...objects);
 }
 
@@ -31,4 +32,11 @@ export function checkPath(type: PackageType): Promise<boolean> {
     return Promise
         .invoke<string>(which, config.rapExecName)
         .then(path => Path.relative(path, config.rapExecPath) === '', () => false);
+}
+
+export function copyNpmBin(): Promise<void> {
+    let npmBinTemplateDirPath = Path.join(__dirname, '../../templates/npm-bin');
+    let npmBinDirPath = Path.resolve('./node_modules/.bin');
+
+    return Promise.invoke<void>(FS.copy, npmBinTemplateDirPath, npmBinDirPath);
 }

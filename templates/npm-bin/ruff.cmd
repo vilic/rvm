@@ -1,0 +1,1 @@
+.\.ruff\bin\ruff.exe %*

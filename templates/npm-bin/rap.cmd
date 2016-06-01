@@ -1,0 +1,1 @@
+.\.ruff\bin\rap.exe %*

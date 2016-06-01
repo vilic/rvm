@@ -20,7 +20,8 @@ import {
 import {
     log,
     warn,
-    checkPath
+    checkPath,
+    copyNpmBin
 } from '../utils';
 
 import * as config from '../config';
@@ -65,12 +66,22 @@ export default class extends Command {
             })
             .then(() => {
                 if (options.local) {
-                    Promise.break;
+                    return this.copyNpmBin();
+                } else {
+                    return this.checkPath();
                 }
-
-                log('CHECKING', '`PATH` environment variable...');
-                return checkPath('sdk');
             })
+            .then(() => log(`Ruff SDK (version ${version}) has been successfully installed.`));
+    }
+
+    private copyNpmBin(): Promise<void> {
+        log('COPYING', 'executable scripts to `node_modules/.bin`...');
+        return copyNpmBin();
+    }
+
+    private checkPath(): Promise<void> {
+        log('CHECKING', '`PATH` environment variable...');
+        return checkPath('sdk')
             .then(pathConfigured => {
                 if (!pathConfigured) {
                     log(Chalk.yellow(`\
@@ -79,9 +90,6 @@ It seems that environment variable \`PATH\` has not yet been configured, please 
 You might need the SDK path to walk through the configuration steps:
   ${config.sdkPath}`));
                 }
-
-                log(`Ruff SDK (version ${version}) has been successfully installed.`);
-            })
-            .enclose();
+            });
     }
 }
