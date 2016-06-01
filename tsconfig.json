@@ -9,7 +9,8 @@
         "noEmitOnError": true,
         "sourceMap": true,
         "rootDir": "src",
-        "outDir": "bld"
+        "outDir": "bld",
+        "newLine": "LF"
     },
     "exclude": [
         "node_modules",

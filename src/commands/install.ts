@@ -21,7 +21,7 @@ import {
     log,
     warn,
     checkPath,
-    copyNpmBin
+    createNpmBinScript
 } from '../utils';
 
 import * as config from '../config';
@@ -66,7 +66,8 @@ export default class extends Command {
             })
             .then(() => {
                 if (options.local) {
-                    return this.copyNpmBin();
+                    this.createNpmBinScripts();
+                    return;
                 } else {
                     return this.checkPath();
                 }
@@ -74,9 +75,10 @@ export default class extends Command {
             .then(() => log(`Ruff SDK (version ${version}) has been successfully installed.`));
     }
 
-    private copyNpmBin(): Promise<void> {
-        log('COPYING', 'executable scripts to `node_modules/.bin`...');
-        return copyNpmBin();
+    private createNpmBinScripts(): void {
+        log('CREATING', 'executable scripts under `node_modules/.bin`...');
+        createNpmBinScript('ruff');
+        createNpmBinScript('rap');
     }
 
     private checkPath(): Promise<void> {

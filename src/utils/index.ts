@@ -34,9 +34,24 @@ export function checkPath(type: PackageType): Promise<boolean> {
         .then(path => Path.relative(path, config.rapExecPath) === '', () => false);
 }
 
-export function copyNpmBin(): Promise<void> {
-    let npmBinTemplateDirPath = Path.join(__dirname, '../../templates/npm-bin');
-    let npmBinDirPath = Path.resolve('./node_modules/.bin');
+export function createNpmBinScript(execName: string): void {
+    let fileName: string;
+    let script: string;
 
-    return Promise.invoke<void>(FS.copy, npmBinTemplateDirPath, npmBinDirPath);
+    if (process.platform === 'win32') {
+        fileName = `${execName}.cmd`;
+        script = `.\\.ruff\\bin\\${execName}.exe %*`;
+    } else {
+        fileName = execName;
+        script = `\
+#!/bin/sh
+./.ruff/bin/${execName} "$@"`;
+    }
+
+    let filePath = Path.resolve('node_modules/.bin', fileName);
+    FS.outputFileSync(filePath, script);
+
+    if (process.platform !== 'win32') {
+        FS.chmodSync(filePath, 0o744);
+    }
 }
