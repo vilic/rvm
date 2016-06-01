@@ -1,8 +1,13 @@
+import * as Path from 'path';
+
 import * as Chalk from 'chalk';
+import Promise from 'thenfail';
 
 import {
     Command,
+    Options,
     command,
+    option,
     param
 } from 'clime';
 
@@ -20,6 +25,15 @@ import {
 
 import * as config from '../config';
 
+export class InstallOptions extends Options {
+    @option({
+        flag: 'l',
+        description: 'Install Ruff SDK into local `.ruff` folder.',
+        toggle: true
+    })
+    local: boolean;
+}
+
 @command({
     description: 'Install Ruff SDK on this computer.'
 })
@@ -29,11 +43,14 @@ export default class extends Command {
             name: 'version',
             description: 'Version of the Ruff SDK to install.'
         })
-        range: string
+        range: string,
+
+        options: InstallOptions
     ) {
         log('FETCHING', 'SDK package metadata...');
 
         let version: string;
+        let targetPath = options.local ? Path.resolve('.ruff') : config.sdkPath;
 
         return getPackageMetadata(range)
             .then(metadata => {
@@ -44,9 +61,13 @@ export default class extends Command {
             })
             .then(packagePath => {
                 log('EXTRACTING', 'SDK package...');
-                return extractPackage('sdk', packagePath);
+                return extractPackage('sdk', packagePath, targetPath);
             })
             .then(() => {
+                if (options.local) {
+                    Promise.break;
+                }
+
                 log('CHECKING', '`PATH` environment variable...');
                 return checkPath('sdk');
             })
@@ -60,6 +81,7 @@ You might need the SDK path to walk through the configuration steps:
                 }
 
                 log(`Ruff SDK (version ${version}) has been successfully installed.`);
-            });
+            })
+            .enclose();
     }
 }

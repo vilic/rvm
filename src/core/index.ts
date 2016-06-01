@@ -127,8 +127,11 @@ export function downloadPackage(type: PackageType, metadata: PackageMetadata): P
         });
 }
 
-export function extractPackage(type: PackageType, packagePath: string): Promise<void> {
-    let targetPath = config.targetPathMap[type];
+export function extractPackage(
+    type: PackageType,
+    packagePath: string,
+    targetPath = config.targetPathMap[type]
+): Promise<void> {
     FS.removeSync(targetPath);
 
     let metadataFilePath = `${packagePath.replace(/\.\w+$/, '')}.json`;
