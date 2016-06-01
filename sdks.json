@@ -8,17 +8,17 @@
                 "win32": {
                     "format": "zip",
                     "strip": 1,
-                    "url": "http://sdk.ruff.io/ruff-sdk-win-1.0.0.zip"
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-win-1.0.0.zip"
                 },
                 "darwin": {
                     "format": "zip",
                     "strip": 1,
-                    "url": "http://sdk.ruff.io/ruff-sdk-mac-1.0.0.zip"
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-mac-1.0.0.zip"
                 },
                 "linux-x64": {
                     "format": "zip",
                     "strip": 1,
-                    "url": "http://sdk.ruff.io/ruff-sdk-linux-1.0.0.zip"
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-linux-1.0.0.zip"
                 }
             }
         },
@@ -27,17 +27,17 @@
                 "win32": {
                     "format": "zip",
                     "strip": 1,
-                    "url": "http://sdk.ruff.io/ruff-sdk-win-1.1.0.zip"
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-win-1.1.0.zip"
                 },
                 "darwin": {
                     "format": "zip",
                     "strip": 1,
-                    "url": "http://sdk.ruff.io/ruff-sdk-mac-1.1.0.zip"
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-mac-1.1.0.zip"
                 },
                 "linux-x64": {
                     "format": "zip",
                     "strip": 1,
-                    "url": "http://sdk.ruff.io/ruff-sdk-linux-1.1.0.zip"
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-linux-1.1.0.zip"
                 }
             }
         }
