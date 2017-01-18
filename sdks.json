@@ -152,6 +152,22 @@
                     "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-linux-1.6.2.zip"
                 }
             }
+        },
+        "1.7.0": {
+            "dists": {
+                "win32": {
+                    "format": "zip",
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-win-1.7.0.zip"
+                },
+                "darwin": {
+                    "format": "zip",
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-mac-1.7.0.zip"
+                },
+                "linux-x64": {
+                    "format": "zip",
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-linux-1.7.0.zip"
+                }
+            }
         }
     }
 }
