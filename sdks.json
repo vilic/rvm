@@ -1,6 +1,6 @@
 {
     "tags": {
-        "latest": "1.6.2"
+        "latest": "1.7.2"
     },
     "packages": {
         "1.0.0": {
@@ -182,6 +182,22 @@
                 "linux-x64": {
                     "format": "zip",
                     "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-linux-1.7.1.zip"
+                }
+            }
+        },
+        "1.7.2": {
+            "dists": {
+                "win32": {
+                    "format": "zip",
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-win-1.7.2.zip"
+                },
+                "darwin": {
+                    "format": "zip",
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-mac-1.7.2.zip"
+                },
+                "linux-x64": {
+                    "format": "zip",
+                    "url": "https://raw.githubusercontent.com/vilic/rvm/packages/ruff-sdk-linux-1.7.2.zip"
                 }
             }
         }
